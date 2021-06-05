@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="shortcut icon" href="hugo.ico" type="image/x-icon">
+    <title>Estacionamento</title>
+    <style>
+        section{
+            background-color: rgb(0, 132, 255);
+            color: white;
+            width: 700px;
+            height: 500px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 20px;
+            font: normal 12pt Arial Black;
+        }
+        div{
+            background-color: black;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 5px 5px 10px;
+        }
+        h1{
+            text-align: center;
+            font: normal 24pt Arial Black;
+        }
+        input{
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <h1>ESTACIONAMENTO</h1>
+        <p>Informe a quantidade de horas de uso do estacionamento: <input type="number" name="" id="qh"></p>
+        <p>Houve consumo: <input type="text" name="" id="sn"></p>
+        <p>Informe a bebida: <input type="text" name="" id="b"></p>
+        <p><input type="button" value="Verificar" onclick="verificar()"></p> 
+        <div id="res"><p>1° Hora 5,00 R$ demais horas 7,00 R$</p>
+            <p>Água 3,50 R$</p>
+            <p>Cerveja 6,00 R$</p>
+            <p>Refrigerante 5,00 R$</p>
+        </div>
+
+    </section>
+    <script>
+        function verificar(){
+            let total = document.getElementById("res")          
+            let q = document.getElementById("qh")
+            let infHora = Number(q.value)
+            let s = document.getElementById("sn")
+            let SimNao = (s.value)
+            let be = document.getElementById("b")
+            let bebida = (be.value)
+            
+
+            if (SimNao == 'não' || SimNao == 'nao' || SimNao == 'Nao'){
+                if(infHora <= 1){
+                    total.innerHTML = `Você utilizou ${infHora} hora, valor a pagar 5,00 R$`
+                }
+                else{
+                    let est = 5 + (infHora * 7 - 7)
+                    total.innerHTML = (`Você utilizou ${infHora} horas o total a pagar é ${est} R$`) 
+                }
+            }
+            else {
+                if(infHora <= 1){
+                    if(bebida == 'água' || bebida == 'Água' || bebida == 'agua'){
+                        let pagar = 3.50 + 5
+                        total.innerHTML = `Você usou ${infHora} de estacionamento e comprou Água, total a pagar ${pagar} R$`
+                    }
+                    if(bebida == 'cerveja' || bebida == 'Cerveja' ){
+                        let pagar = 6 + 5
+                        total.innerHTML = `Você usou ${infHora} de estacionamento e comprou Cerveja, total a pagar ${pagar} R$`
+                    }
+                    if(bebida == 'Refrigerante' || bebida == 'refrigerante' ){
+                        let pagar = 5 + 5
+                        total.innerHTML = `Você usou ${infHora} de estacionamento e comprou Refrigerante, total a pagar ${pagar} R$`
+                    } 
+                }
+                else{
+                    if(bebida == 'água' || bebida == 'Água' || bebida == 'agua' || bebida == 'Agua'){
+                        let est = 5 + (infHora * 7 - 7)
+                        let pagar = 3.50 + est
+                        total.innerHTML = `Você usou ${infHora} horas de estacionamento e comprou Água, total a pagar ${pagar} R$`
+                    }
+                    if(bebida == 'cerveja' || bebida == 'Cerveja' ){
+                        let est = 5 + (infHora * 7 - 7)
+                        let pagar = 6 + est
+                        total.innerHTML = `Você usou ${infHora} horas de estacionamento e comprou Cerveja, total a pagar ${pagar} R$`
+                    }
+                    if(bebida == 'Refrigerante' || bebida == 'refrigerante' ){
+                        let est = 5 + (infHora * 7 - 7)
+                        let pagar = 5 + est
+                        total.innerHTML = `Você usou ${infHora} horas de estacionamento e comprou Refrigerante, total a pagar ${pagar} R$` 
+                }
+ 
+                }
+                
+                
+            }
+        }
+     
+    </script>
+    
+</body>
+</html>
